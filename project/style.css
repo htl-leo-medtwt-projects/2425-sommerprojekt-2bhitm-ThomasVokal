@@ -1,17 +1,17 @@
 :root {
-    --background-color: linear-gradient(180deg, #121212, #1a1a1a);
-    --text-color: #ffffff;
-    --header-bg: linear-gradient(90deg, #1E1E1E, #2A2A2A);
-    --header-hover-bg: linear-gradient(90deg, #292929, #3A3A3A);
-    --hero-bg: linear-gradient(180deg, #181818, #202020);
-    --hero-image-bg: linear-gradient(135deg, #333333, #4A4A4A);
-    --hero-image-hover-bg: linear-gradient(135deg, #444444, #5A5A5A);
-    --car-card-bg: linear-gradient(180deg, #1E1E1E, #2B2B2B);
-    --car-card-hover-bg: linear-gradient(180deg, #292929, #3C3C3C);
-    --car-image-bg: linear-gradient(135deg, #333333, #4A4A4A);
-    --car-image-hover-bg: linear-gradient(135deg, #444444, #5A5A5A);
-    --accent-color: #8A2BE2; /* Purple */
-    --secondary-accent-color: #9370DB; /* Medium Purple */
+    --background-color: linear-gradient(180deg, #ffffff, #f8f8f8); 
+    --text-color: #4a4a4a; 
+    --header-bg: linear-gradient(90deg, #e6e6fa, #dcdcdc);
+    --header-hover-bg: linear-gradient(90deg, #dcdcdc, #e6e6fa); 
+    --hero-bg: linear-gradient(180deg, #f5f5f5, #ffffff); 
+    --hero-image-bg: linear-gradient(135deg, #e6e6fa, #d8bfd8);
+    --hero-image-hover-bg: linear-gradient(135deg, #d8bfd8, #dda0dd); 
+    --car-card-bg: linear-gradient(180deg, #f8f8ff, #ffffff); 
+    --car-card-hover-bg: linear-gradient(180deg, #ffffff, #f0f0f5); 
+    --car-image-bg: linear-gradient(135deg, #e6e6fa, #dcdcdc); 
+    --car-image-hover-bg: linear-gradient(135deg, #dcdcdc, #e6e6fa); 
+    --accent-color: #9370db; 
+    --secondary-accent-color: #ba55d3; 
 }
 
 /* Allgemeine Stile */
@@ -105,6 +105,62 @@ header:hover {
 
 .car-image:hover {
     background: var(--car-image-hover-bg);
+}
+
+/* Login-Bereich */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--background-color);
+}
+
+.login-form {
+    background: var(--header-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.login-form h1 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: var(--hero-bg);
+    color: var(--text-color);
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.login-form button:hover {
+    background: var(--secondary-accent-color);
 }
 
 /* Responsive Anpassung */
