@@ -3,54 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gebrauchtwagen Finder</title>
+    <title>AutoScout24 Design</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script type="module" src="script.js"></script>
 </head>
 <body>
+
     <header>
-        <h1>CarDeal24</h1>
-        <p>Finde dein perfektes Fahrzeug schnell und einfach.</p>
+        <div class="logo">FairWheels</div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h2>Finde dein Traumauto</h2>
-                <p>Durchsuche unsere große Auswahl an Gebrauchtwagen.</p>
-            </div>
-            <img class="hero-image" src="./Bilder/Startseite_Image_1.jpeg" alt="">
-        </section>
+    <div class="hero">
+        <div class="overlay">
+            <h1>Suchen Sie nach Autos</h1>
+            <p>Schnell & kostenfrei suchen.</p>
+        </div>
+    </div>
 
-        <section class="cars">
-            <h2>Beliebte Fahrzeuge</h2>
-            <div class="car-grid">
-                <div class="car-card">
-                    <img class="car-image" src="./Bilder/Startseite_Image_1.jpeg" alt="">
-                    <h3>BMW M4</h3>
-                    <p>450 PS • 2020 • 30.000 km</p>
-                </div>
-                <div class="car-card">
-                    <div class="car-image">Bild: SUV</div>
-                    <h3>Audi Q5</h3>
-                    <p>Diesel • 2019 • 50.000 km</p>
-                </div>
-                <div class="car-card">
-                    <div class="car-image">Bild: Limousine</div>
-                    <h3>Mercedes C-Klasse</h3>
-                    <p>Benzin • 2021 • 20.000 km</p>
-                </div>
-                <div class="car-card">
-                    <div class="car-image">Bild: Limousine</div>
-                    <h3>Mercedes G-Klasse</h3>
-                    <p>Benzin • 2021 • 50.000 km</p>
-                </div>
-                <div class="car-card">
-                    <div class="car-image">Bild: Limousine</div>
-                    <h3>BMW M340i</h3>
-                    <p>Benzin • 2023 • 15.000 km</p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section id="search-box">
+    </section>
+
+    <div id="auto-container"></div>
+
+    <section class="bottom-section">
+        <div class="last-search">
+            <p>Deine letzte Suche</p>
+            <strong>SEAT Leon</strong>
+            <p>EZ von 2014 · bis 15 000 €</p>
+        </div>
+        <div class="sell-car">
+            <p>Favoriten abspeichern und leicht wieder finden.</p>
+            <p>Falls Ihnen ein Auto gefällt und Sie dieses an einem anderen Zeitpunkt wieder aufrufen wollen, können sie das ganz leicht über die Favoriten-Option machen</p>
+            <button class="sell-btn">Jetzt Favoriten öffnen</button>
+        </div>
+
+    </section>
+
 </body>
 </html>

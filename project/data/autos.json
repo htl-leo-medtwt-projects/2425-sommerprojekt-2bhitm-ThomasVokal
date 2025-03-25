@@ -2,16 +2,17 @@
     {
       "marke": "BMW",
       "modell": "M4",
-      "leistung": 450,
+      "leistung": 430,
       "zylinder": 6,
       "standort": "Wien",
-      "preis": 69900,
-      "baujahr": 2020,
+      "preis": 55900,
+      "baujahr": 2018,
       "kilometerstand": 30000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Coupé",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_m4.png"
     },
     {
       "marke": "Audi",
@@ -25,7 +26,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_Q5.png"
     },
     {
       "marke": "Mercedes",
@@ -39,7 +41,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_C300.png"
     },
     {
       "marke": "Porsche",
@@ -53,7 +56,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Sportwagen",
-      "farbe": "Rot"
+      "farbe": "Rot",
+      "bild": "./Bilder/modelle/model_carrera.png"
     },
     {
       "marke": "VW",
@@ -67,7 +71,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Manuell",
       "fahrzeugtyp": "Kompaktwagen",
-      "farbe": "Grau"
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_gti.png"
     },
     {
       "marke": "Tesla",
@@ -81,7 +86,8 @@
       "treibstoff": "Elektro",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_tesla3.png"
     },
     {
       "marke": "Ford",
@@ -95,7 +101,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Manuell",
       "fahrzeugtyp": "Coupé",
-      "farbe": "Gelb"
+      "farbe": "Gelb",
+      "bild": "./Bilder/modelle/model_mustang.png"
     },
     {
       "marke": "Opel",
@@ -109,7 +116,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Manuell",
       "fahrzeugtyp": "Kombi",
-      "farbe": "Silber"
+      "farbe": "Silber",
+      "bild": "./Bilder/modelle/model_astra.png"
     },
     {
       "marke": "Toyota",
@@ -123,7 +131,8 @@
       "treibstoff": "Hybrid",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_corolla.png"
     },
     {
       "marke": "Nissan",
@@ -137,7 +146,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_Xtrail.png"
     },
     {
       "marke": "BMW",
@@ -151,7 +161,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_x3.png"
     },
     {
       "marke": "Audi",
@@ -165,7 +176,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Kompaktwagen",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_a3.png"
     },
     {
       "marke": "Mercedes",
@@ -179,7 +191,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Silber"
+      "farbe": "Silber",
+      "bild": "./Bilder/modelle/model_e200.png"
     },
     {
       "marke": "Porsche",
@@ -193,7 +206,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_macan.png"
     },
     {
       "marke": "VW",
@@ -207,7 +221,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Kombi",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_passata.png"
     },
     {
       "marke": "Tesla",
@@ -221,7 +236,8 @@
       "treibstoff": "Elektro",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Rot"
+      "farbe": "Rot",
+      "bild": "./Bilder/modelle/model_teslaS.png"
     },
     {
       "marke": "Ford",
@@ -235,7 +251,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Manuell",
       "fahrzeugtyp": "Kompaktwagen",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_focus.png"
     },
     {
       "marke": "Opel",
@@ -249,7 +266,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Grau"
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_insignia.png"
     },
     {
       "marke": "Toyota",
@@ -263,7 +281,8 @@
       "treibstoff": "Hybrid",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_rav4.png"
     },
     {
       "marke": "Nissan",
@@ -277,7 +296,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Rot"
+      "farbe": "Rot",
+      "bild": "./Bilder/modelle/model_qashqai.png"
     },
     {
       "marke": "BMW",
@@ -291,7 +311,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_bmw5.png"
     },
     {
       "marke": "Audi",
@@ -305,7 +326,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_q7.png"
     },
     {
       "marke": "Mercedes",
@@ -313,13 +335,14 @@
       "leistung": 258,
       "zylinder": 4,
       "standort": "Linz",
-      "preis": 59900,
-      "baujahr": 2021,
-      "kilometerstand": 15000,
+      "preis": 29900,
+      "baujahr": 2015,
+      "kilometerstand": 85000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_glc300.png"
     },
     {
       "marke": "Porsche",
@@ -328,12 +351,13 @@
       "zylinder": 6,
       "standort": "Salzburg",
       "preis": 89900,
-      "baujahr": 2019,
-      "kilometerstand": 30000,
+      "baujahr": 2017,
+      "kilometerstand": 60000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_cayenne.png"
     },
     {
       "marke": "VW",
@@ -341,13 +365,14 @@
       "leistung": 150,
       "zylinder": 4,
       "standort": "Innsbruck",
-      "preis": 34900,
-      "baujahr": 2020,
-      "kilometerstand": 20000,
+      "preis": 17900,
+      "baujahr": 2012,
+      "kilometerstand": 90000,
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Grau"
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_tiguan.png"
     },
     {
       "marke": "Tesla",
@@ -361,7 +386,8 @@
       "treibstoff": "Elektro",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_teslaX.png"
     },
     {
       "marke": "Ford",
@@ -369,13 +395,14 @@
       "leistung": 150,
       "zylinder": 4,
       "standort": "Klagenfurt",
-      "preis": 29900,
-      "baujahr": 2021,
-      "kilometerstand": 15000,
-      "treibstoff": "Hybrid",
+      "preis": 10990,
+      "baujahr": 2010,
+      "kilometerstand": 115000,
+      "treibstoff": "diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Blau"
+      "farbe": "Blau",
+      "bild": "./Bilder/modelle/model_kuga.png"
     },
     {
       "marke": "Opel",
@@ -383,13 +410,14 @@
       "leistung": 100,
       "zylinder": 3,
       "standort": "Graz",
-      "preis": 17900,
-      "baujahr": 2020,
-      "kilometerstand": 20000,
+      "preis": 13900,
+      "baujahr": 2013,
+      "kilometerstand": 120000,
       "treibstoff": "Benzin",
       "getriebe": "Manuell",
       "fahrzeugtyp": "Kleinwagen",
-      "farbe": "Rot"
+      "farbe": "Rot",
+      "bild": "./Bilder/modelle/model_corsa.png"
     },
     {
       "marke": "Toyota",
@@ -403,7 +431,8 @@
       "treibstoff": "Hybrid",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Kleinwagen",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_yaris.png"
     },
     {
       "marke": "Nissan",
@@ -412,12 +441,13 @@
       "zylinder": 3,
       "standort": "Linz",
       "preis": 22900,
-      "baujahr": 2020,
-      "kilometerstand": 15000,
+      "baujahr": 2018,
+      "kilometerstand": 45000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "SUV",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_juke.png"
     },
     {
       "marke": "BMW",
@@ -431,7 +461,8 @@
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Cabriolet",
-      "farbe": "Rot"
+      "farbe": "Rot",
+      "bild": "./Bilder/modelle/model_z4.png"
     },
     {
       "marke": "Audi",
@@ -445,7 +476,8 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_a6.png"
     },
     {
       "marke": "Mercedes",
@@ -453,13 +485,14 @@
       "leistung": 163,
       "zylinder": 4,
       "standort": "Linz",
-      "preis": 34900,
-      "baujahr": 2020,
-      "kilometerstand": 20000,
+      "preis": 54900,
+      "baujahr": 2024,
+      "kilometerstand": 2000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Kompaktwagen",
-      "farbe": "Weiß"
+      "farbe": "Weiß",
+      "bild": "./Bilder/modelle/model_a200.png"
     },
     {
       "marke": "Porsche",
@@ -468,12 +501,13 @@
       "zylinder": 6,
       "standort": "Salzburg",
       "preis": 99900,
-      "baujahr": 2019,
-      "kilometerstand": 25000,
+      "baujahr": 2023,
+      "kilometerstand": 10000,
       "treibstoff": "Benzin",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Schwarz"
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_panamera.png"
     },
     {
       "marke": "VW",
@@ -487,6 +521,52 @@
       "treibstoff": "Diesel",
       "getriebe": "Automatik",
       "fahrzeugtyp": "Limousine",
-      "farbe": "Grau"
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_arteon.png"
+    },
+    {
+      "marke": "BMW",
+      "modell": "5er",
+      "leistung": 218,
+      "zylinder": 6,
+      "standort": "Innsbruck",
+      "preis": 25900,
+      "baujahr": 2021,
+      "kilometerstand": 120000,
+      "treibstoff": "Diesel",
+      "getriebe": "Automatik",
+      "fahrzeugtyp": "Limousine",
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_bmw5_1.png"
+    },
+    {
+      "marke": "Mercedes",
+      "modell": "EQB 350",
+      "leistung": 292,
+      "zylinder": 0,
+      "standort": "Graz",
+      "preis": 42900,
+      "baujahr": 2022,
+      "kilometerstand": 18000,
+      "treibstoff": "Elektro",
+      "getriebe": "Automatik",
+      "fahrzeugtyp": "SUV",
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_EQB350.png"
+    },
+    {
+      "marke": "Mercedes",
+      "modell": "GLE 63s",
+      "leistung": 571,
+      "zylinder": 8,
+      "standort": "Graz",
+      "preis": 125900,
+      "baujahr": 2022,
+      "kilometerstand": 18000,
+      "treibstoff": "Benzin",
+      "getriebe": "Automatik",
+      "fahrzeugtyp": "SUV",
+      "farbe": "Schwarz",
+      "bild": "./Bilder/modelle/model_gle63.png"
     }
 ]
