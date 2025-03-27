@@ -133,7 +133,7 @@ function renderAutos(filteredAutos) {
                     gsap.to(entry.target, {
                         opacity: 1,
                         y: 0,
-                        duration: 1,
+                        duration: 0.2,
                         ease: "power4.out"
                     });
                     observer.unobserve(entry.target);
