@@ -1,14 +1,25 @@
 :root {
     --background-dark: #222;
     --background-darker: #1a1a1a;
-    --background-light-dark: #2e2e2e;
-    --background-gray: #444;
+    --background-light-dark: #232323;
+    --background-gray: #313131;
     --text-light: #f2f2f2;
     --text-offwhite: #e6e6e6;
     --text-logo-color: #7700ff;
     --text-logo-light-color: #af6aff;
+    --overlay-background: rgba(0, 0, 0, 0.5);
+}
 
-
+:root.light-mode {
+    --background-dark: #f9f9f9;
+    --background-darker: #ffffff;
+    --background-light-dark: #e0e0e0;
+    --background-gray: #d6d6d6;
+    --text-light: #000000;
+    --text-offwhite: #444;
+    --text-logo-color: #7700ff;
+    --text-logo-light-color: #af6aff;
+    --overlay-background: rgba(145, 145, 145, 0.5);
 }
 
 /* ========= Allgemeine Styles ========= */
@@ -24,6 +35,10 @@ body {
 }
 
 /* ========= Header ========= */
+#headerPlaceHolder {
+    height: 80px;
+}
+
 header {
     background: var(--background-dark);
     padding: 0px 15px;
@@ -32,6 +47,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: var(--text-offwhite) 2px solid;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
 }
 
 .wrapper {
@@ -41,6 +60,7 @@ header {
 #Wheels {
     background-color: var(--text-logo-color);
     border-radius: 5px;
+    color: white;
 }
 
 .logo {
@@ -77,11 +97,26 @@ header {
 #login {
     padding:10px;
     background-color: var(--text-logo-color);
-    border: var(--background-light-dark) 3px solid;
-    border-radius: 20px;
+    color: white;
+    border: var(--text-offwhite) 3px solid;
+    border-radius: 15px;
 }
 
+#whiteModeToggle {
+    background-color: var(--text-offwhite);
+    border: var(--background-light) 3px solid;
+    border-radius: 15px;
+    color: var(--background-darker);
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0px 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
 
+#whiteModeToggle:hover {
+    background-color: var(--text-logo-light-color);
+}
 
 /* ========= Hero Section ========= */
 .hero {
@@ -94,10 +129,11 @@ header {
     background-image: url(./Bilder/Startseite_Image_1.jpeg);
     background-position: center;
     background-size: cover;
+    border-bottom: var(--text-offwhite) 2px solid;
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--overlay-background);
     padding: 10px;
     width: 80%;
     border-radius: 15px;
@@ -146,7 +182,8 @@ header {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
-    background: var(--text-light);
+    background: var(--text-offwhite);
+    color: var(--background-light-dark);
     cursor: pointer;
     transition: all 0.3s ease;
     width: auto;

@@ -107,6 +107,7 @@ function filterAutos() {
 
     renderAutos(filteredAutos);
 }
+
 function renderAutos(filteredAutos) {
     let container = document.getElementById("auto-container");
     container.innerHTML = "";
@@ -139,7 +140,7 @@ function renderAutos(filteredAutos) {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.01 });
 
         observer.observe(autoBox);
     });
@@ -150,3 +151,16 @@ document.addEventListener("change", event => {
         filterAutos();
     }
 });
+
+let tempCount = 0;
+
+document.getElementById("whiteModeToggle").addEventListener("click", () => {
+    document.documentElement.classList.toggle("light-mode");
+    if (tempCount % 2 == 0) {
+        document.getElementById('whiteModeToggle').innerHTML = "WHITE";
+    }else {
+        document.getElementById('whiteModeToggle').innerHTML = "DARK";
+    }
+    tempCount++;
+});
+
