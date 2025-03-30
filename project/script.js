@@ -3,11 +3,11 @@ let searchBox = document.getElementById("search-box");
 let getriebeOptionen = ["Automatik", "Manuell"];
 
 fetch("data/autos.json")
-  .then(response => response.json()) // JSON-Daten parsen
+  .then(response => response.json())
   .then(data => {
-      autos = data; // Daten in die globale Variable speichern
-      console.log(autos); // Überprüfen, ob die Daten geladen wurden
-      printSearchBox(); // Funktion aufrufen
+      autos = data;
+      console.log(autos);
+      printSearchBox();
       renderAutos(autos);
   })
   .catch(error => console.error("Fehler beim Laden der Daten:", error));
@@ -157,10 +157,12 @@ let tempCount = 0;
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
     document.documentElement.classList.toggle("light-mode");
     if (tempCount % 2 == 0) {
-        document.getElementById('whiteModeToggle').innerHTML = "WHITE";
+        document.getElementById('whiteModeToggle').innerHTML = "LIGHT";
     }else {
         document.getElementById('whiteModeToggle').innerHTML = "DARK";
     }
     tempCount++;
 });
+
+document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
 

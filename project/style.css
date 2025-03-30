@@ -39,6 +39,13 @@ body {
     height: 80px;
 }
 
+#dropDown {
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
+
 header {
     background: var(--background-dark);
     padding: 0px 15px;
@@ -60,17 +67,25 @@ header {
 #Wheels {
     background-color: var(--text-logo-color);
     border-radius: 5px;
-    color: white;
+    padding: 1px;
+    color: var(--background-light-dark);
 }
 
-.logo {
+#logo {
     font-size: 25px;
     font-weight: bold;
     display: flex;
     margin-left: 20%;
+    cursor: pointer;
+    transition: 0.5s ease;
+
 }
 
-.logo span {
+#logo:hover {
+    transform: scale(1.05);
+}
+
+#logo span {
     color: var(--background-dark);
     padding: 2px 5px;
 }
@@ -79,6 +94,7 @@ header {
     display: flex;
     gap: 15px;
     margin-right: 20%;
+    transition: 0.5s ease;
 }
 
 .nav-rechts a {
@@ -90,16 +106,17 @@ header {
     transition: 0.5s ease;
 }
 
-.nav-links a:hover {
-    transform: scale(1.1) translateY(-2px);
+.nav-rechts a:hover {
+    transform: scale(1.1);
 }
 
 #login {
-    padding:10px;
+    padding: 10px;
     background-color: var(--text-logo-color);
     color: white;
     border: var(--text-offwhite) 3px solid;
     border-radius: 15px;
+    text-align: center;
 }
 
 #whiteModeToggle {
@@ -115,7 +132,7 @@ header {
 }
 
 #whiteModeToggle:hover {
-    background-color: var(--text-logo-light-color);
+    background-color: var(--text-logo-color);
 }
 
 /* ========= Hero Section ========= */
@@ -138,6 +155,12 @@ header {
     width: 80%;
     border-radius: 15px;
     text-align: center;
+    transition: 0.5s ease;
+    cursor: pointe;
+}
+
+.overlay:hover {
+    transform: scale(1.1);
 }
 
 /* ========= Suchfeld ========= */
@@ -197,7 +220,8 @@ header {
 }
 
 /* ========= Bottom Section ========= */
-select, .search-btn {
+select,
+.search-btn {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -213,10 +237,11 @@ select, .search-btn {
 .bottom-section {
     display: flex;
     justify-content: space-around;
-    padding: 20px; 
+    padding: 20px;
 }
 
-.last-search, .sell-car {
+.last-search,
+.sell-car {
     background: var(--text-light);
     padding: 20px;
     border-radius: 10px;
@@ -280,23 +305,7 @@ select, .search-btn {
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-    #auto-container {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .filters {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .filters select {
-        width: 80%;
-        min-width: auto;
-    }
-}  
 
 @media (max-width: 1300px) {
     #auto-container {
@@ -308,4 +317,60 @@ select, .search-btn {
         width: 90%;
         margin: auto;
     }
+
+    .nav-rechts {
+        margin-right: 3%;
+    }
+
+    #logo {
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 768px) {
+    #auto-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        gap: 10px;
+    }
+
+    .filters select {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .nav-rechts {
+        display: none;
+        flex-direction: column;
+    }
+
+    #logo {
+        margin: auto;
+    }
+
+    #dropDown {
+        display: block;
+    }
+
+
+}
+.nav-rechts.active {
+    display: grid;
+    grid-template-columns: auto auto;
+    position: absolute;
+    top: 150px;
+    width: 80%;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: var(--background-gray);
+    padding: 10px;
+    border-radius: 15px;
 }
