@@ -112,7 +112,8 @@ function renderAutos(filteredAutos) {
     let container = document.getElementById("auto-container");
     container.innerHTML = "";
 
-    filteredAutos.forEach(auto => {
+    for (let i = 0; i < filteredAutos.length; i++) {
+        let auto = filteredAutos[i];
         let autoBox = document.createElement("div");
         autoBox.classList.add("auto-box");
         autoBox.innerHTML = `
@@ -129,7 +130,8 @@ function renderAutos(filteredAutos) {
 
         // Intersection Observer für Animation (Hilfe von KI)
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
+            for (let j = 0; j < entries.length; j++) {
+                let entry = entries[j];
                 if (entry.isIntersecting) {
                     gsap.to(entry.target, {
                         opacity: 1,
@@ -139,11 +141,11 @@ function renderAutos(filteredAutos) {
                     });
                     observer.unobserve(entry.target);
                 }
-            });
+            }
         }, { threshold: 0.01 });
 
         observer.observe(autoBox);
-    });
+    }
 }
 
 document.addEventListener("change", event => {
@@ -165,4 +167,3 @@ document.getElementById("whiteModeToggle").addEventListener("click", () => {
 });
 
 document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
-

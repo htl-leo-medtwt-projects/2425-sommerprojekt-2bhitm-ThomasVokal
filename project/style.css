@@ -283,8 +283,8 @@ select,
 }
 
 .auto-box:hover {
-    transform: scale(1.05);
     background: var(--background-gray);
+    
 }
 
 .auto-box:hover h3 {

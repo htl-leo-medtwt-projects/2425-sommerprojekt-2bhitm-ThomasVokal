@@ -598,5 +598,50 @@
       "fahrzeugtyp": "Kompaktwagen",
       "farbe": "Silber",
       "bild": "./Bilder/modelle/model_auris.png"
+    },
+    {
+      "marke": "Audi",
+      "modell": "RS7LE ABT",
+      "leistung": 1000,
+      "zylinder": 8,
+      "standort": "Holzhausen",
+      "preis": 280000,
+      "baujahr": 2022,
+      "kilometerstand": 6000,
+      "treibstoff": "Benzin",
+      "getriebe": "Automatik",
+      "fahrzeugtyp": "Limousine",
+      "farbe": "Grau",
+      "bild": "./Bilder/modelle/model_rs7.png"
+    },
+    {
+      "marke": "GrAski",
+      "modell": "bil (Graskibil)",
+      "leistung": 3.5,
+      "zylinder": 16,
+      "standort": "Berlin Mitte / Manchmal auch Mci Taubi",
+      "preis": 2, 
+      "baujahr": 2027,
+      "kilometerstand": -10,
+      "treibstoff": "Makka mit Diesel",
+      "getriebe": "Undefined",
+      "fahrzeugtyp": "Kompakt(sehr)",
+      "farbe": "Lila Orange",
+      "bild": "./Bilder/modelle/model_graski.png"
+    },
+    {
+      "marke": "VW",
+      "modell": "Käfer",
+      "leistung": 90,
+      "zylinder": 4,
+      "standort": "Salzburg",
+      "preis": 10000, 
+      "baujahr": 202,
+      "kilometerstand": 10000,
+      "treibstoff": "Benzin",
+      "getriebe": "Manue^ ",
+      "fahrzeugtyp": "Kompakt",
+      "farbe": "Weiss",
+      "bild": "./Bilder/modelle/model_beetle.png"
     }
 ]
