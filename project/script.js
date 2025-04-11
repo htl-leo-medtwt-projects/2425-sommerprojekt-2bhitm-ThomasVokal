@@ -108,6 +108,40 @@ function filterAutos() {
     renderAutos(filteredAutos);
 }
 
+function createDetailView(auto) {
+    // Check if detail view already exists
+    if (document.getElementById("detail-view")) return;
+
+    const detailView = document.createElement("div");
+    detailView.id = "detail-view";
+    detailView.innerHTML = `
+        <div class="detail-content">
+            <button id="close-detail-view">X</button>
+            <div class="detail-left">
+                <img src="${auto.bild}" alt="${auto.marke} ${auto.modell}">
+            </div>
+            <div class="detail-right">
+                <h2>${auto.marke} ${auto.modell}</h2>
+                <p><strong>Preis:</strong> ${auto.preis} €</p>
+                <p><strong>Leistung:</strong> ${auto.leistung} PS</p>
+                <p><strong>Zylinder:</strong> ${auto.zylinder}</p>
+                <p><strong>Standort:</strong> ${auto.standort}</p>
+                <p><strong>Baujahr:</strong> ${auto.baujahr}</p>
+                <p><strong>Kilometerstand:</strong> ${auto.kilometerstand} km</p>
+                <p><strong>Treibstoff:</strong> ${auto.treibstoff}</p>
+                <p><strong>Getriebe:</strong> ${auto.getriebe}</p>
+                <p><strong>Fahrzeugtyp:</strong> ${auto.fahrzeugtyp}</p>
+                <p><strong>Farbe:</strong> ${auto.farbe}</p>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(detailView);
+
+    document.getElementById("close-detail-view").addEventListener("click", () => {
+        detailView.remove();
+    });
+}
+
 function renderAutos(filteredAutos) {
     let container = document.getElementById("auto-container");
     container.innerHTML = "";
@@ -126,6 +160,7 @@ function renderAutos(filteredAutos) {
             <p><strong>Getriebe:</strong> ${auto.getriebe}</p>
             <p><strong>Treibstoff:</strong> ${auto.treibstoff}</p>
         `;
+        autoBox.addEventListener("click", () => createDetailView(auto));
         container.appendChild(autoBox);
 
         // Intersection Observer für Animation (Hilfe von KI)
@@ -146,6 +181,12 @@ function renderAutos(filteredAutos) {
 
         observer.observe(autoBox);
     }
+}
+
+function generateDescription(auto) {
+    return `Der ${auto.marke} ${auto.modell} ist ein ${auto.fahrzeugtyp} mit ${auto.leistung} PS und einem ${auto.getriebe}-Getriebe. 
+    Er wurde im Jahr ${auto.baujahr} gebaut und hat bisher ${auto.kilometerstand} km zurückgelegt. 
+    Dieses Fahrzeug ist in ${auto.farbe} erhältlich und verwendet ${auto.treibstoff} als Treibstoff.`;
 }
 
 document.addEventListener("change", event => {
