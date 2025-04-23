@@ -22,6 +22,56 @@
     --overlay-background: rgba(145, 145, 145, 0.5);
 }
 
+/* ========= Login Styles ========= */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-darker);
+    font-family: Arial, sans-serif;
+  }
+
+  .login-box {
+    background-color: var(--background-light-dark);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    text-align: center;
+    color: var(--text-light);
+  }
+
+  .login-box h2 {
+    margin-bottom: 20px;
+  }
+
+  .login-box input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--background-gray);
+    color: var(--text-light);
+  }
+
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--text-logo-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .login-box button:hover {
+    background-color: var(--text-logo-light-color);
+  }
+
 /* ========= Allgemeine Styles ========= */
 
 
@@ -336,10 +386,22 @@ select,
     position: relative;
 }
 
+.detail-left {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.detail-left h3{
+    width: 80%;
+    margin: auto;
+}
+
 .detail-left img {
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: auto;
 }
 
 .detail-right {
@@ -368,6 +430,22 @@ select,
 
 #close-detail-view:hover {
     background: var(--text-logo-light-color);
+}
+
+/* Favoriten Button */
+.fav-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--text-logo-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.fav-btn:hover {
+    background-color: var(--text-logo-light-color);
 }
 
 @media (max-width: 1300px) {

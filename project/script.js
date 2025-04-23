@@ -119,6 +119,7 @@ function createDetailView(auto) {
             <button id="close-detail-view">X</button>
             <div class="detail-left">
                 <img src="${auto.bild}" alt="${auto.marke} ${auto.modell}">
+                <h3><strong></strong> ${generateDescription(auto)}€</h3>
             </div>
             <div class="detail-right">
                 <h2>${auto.marke} ${auto.modell}</h2>
@@ -132,6 +133,7 @@ function createDetailView(auto) {
                 <p><strong>Getriebe:</strong> ${auto.getriebe}</p>
                 <p><strong>Fahrzeugtyp:</strong> ${auto.fahrzeugtyp}</p>
                 <p><strong>Farbe:</strong> ${auto.farbe}</p>
+                <button id="fav-btn" class="fav-btn">⭐ Zum Favoriten hinzufügen</button>
             </div>
         </div>
     `;
@@ -139,6 +141,19 @@ function createDetailView(auto) {
 
     document.getElementById("close-detail-view").addEventListener("click", () => {
         detailView.remove();
+    });
+
+    // Favoriten Button Logik
+    document.getElementById("fav-btn").addEventListener("click", () => {
+        let favoriten = JSON.parse(localStorage.getItem("favoriten")) || [];
+
+        if (!favoriten.some(fav => fav.id === auto.id)) {
+            favoriten.push(auto);
+            localStorage.setItem("favoriten", JSON.stringify(favoriten));
+            alert("Auto zu Favoriten hinzugefügt!");
+        } else {
+            alert("Dieses Auto ist bereits in deinen Favoriten.");
+        }
     });
 }
 
@@ -206,5 +221,6 @@ document.getElementById("whiteModeToggle").addEventListener("click", () => {
     }
     tempCount++;
 });
+
 
 document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
