@@ -127,6 +127,7 @@ header {
 
 #logo {
     font-size: 25px;
+    margin-left: 20%;
     font-weight: bold;
     display: flex;
     cursor: pointer;
@@ -455,7 +456,6 @@ select,
 }
 
 @media (max-width: 768px) {
-
 
     #logo {
         margin: auto;

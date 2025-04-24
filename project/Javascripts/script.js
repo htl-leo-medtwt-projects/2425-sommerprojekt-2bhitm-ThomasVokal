@@ -240,6 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.includes("favoriten.html")) {
         loadFavoriten();
     }
+
+    // Add event listener to logo
+    document.getElementById("logo").addEventListener("click", () => {
+        window.location.href = "autos.html";
+    });
 });
 
 // Toggle theme and save preference
