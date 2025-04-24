@@ -39,7 +39,7 @@ function renderFavoriten(favoriten) {
         autoBox.classList.add("auto-box");
         autoBox.innerHTML = `
             <h2>${auto.marke} ${auto.modell}</h2>
-            <img src="${auto.bild}" alt="${auto.marke} ${auto.modell}" class="auto-bild">
+            <img src="../${auto.bild}" alt="${auto.marke} ${auto.modell}" class="auto-bild">
             <h3><strong>Preis:</strong> ${auto.preis} €</h3>
             <p><strong>Leistung:</strong> ${auto.leistung} PS</p>
             <p><strong>Kilometer:</strong> ${auto.kilometerstand} km</p>
@@ -79,8 +79,8 @@ function createDetailView(auto) {
         <div class="detail-content">
             <button id="close-detail-view">X</button>
             <div class="detail-left">
-                <img src="${auto.bild}" alt="${auto.marke} ${auto.modell}">
-                <h3><strong></strong> ${generateDescription(auto)}€</h3>
+                <img src="../${auto.bild}" alt="${auto.marke} ${auto.modell}">
+                <h3><strong></strong> ${generateDescription(auto)}</h3>
             </div>
             <div class="detail-right">
                 <h2>${auto.marke} ${auto.modell}</h2>

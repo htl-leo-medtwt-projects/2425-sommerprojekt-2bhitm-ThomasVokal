@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("password", password);
   
         // Weiterleitung
-        window.location.href = "project/autos.html";
+        window.location.href = "../autos.html";
       });
     }
   });
