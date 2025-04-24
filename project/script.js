@@ -148,8 +148,8 @@ function createDetailView(auto) {
         let favoriten = JSON.parse(localStorage.getItem("favoriten")) || [];
 
         if (!favoriten.some(fav => fav.id === auto.id)) {
-            favoriten.push(auto);
-            localStorage.setItem("favoriten", JSON.stringify(favoriten));
+            favoriten.push(auto); // Add the car to the favorites array
+            localStorage.setItem("favoriten", JSON.stringify(favoriten)); // Save the updated array
             alert("Auto zu Favoriten hinzugefügt!");
         } else {
             alert("Dieses Auto ist bereits in deinen Favoriten.");
@@ -212,15 +212,28 @@ document.addEventListener("change", event => {
 
 let tempCount = 0;
 
-document.getElementById("whiteModeToggle").addEventListener("click", () => {
-    document.documentElement.classList.toggle("light-mode");
-    if (tempCount % 2 == 0) {
-        document.getElementById('whiteModeToggle').innerHTML = "LIGHT";
-    }else {
-        document.getElementById('whiteModeToggle').innerHTML = "DARK";
+// Apply saved theme on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "light") {
+        document.documentElement.classList.add("light-mode");
+        document.getElementById("whiteModeToggle").innerHTML = "LIGHT";
+    } else {
+        document.documentElement.classList.remove("light-mode");
+        document.getElementById("whiteModeToggle").innerHTML = "DARK";
     }
-    tempCount++;
+
+    if (window.location.pathname.includes("favoriten.html")) {
+        loadFavoriten();
+    }
 });
 
+// Toggle theme and save preference
+document.getElementById("whiteModeToggle").addEventListener("click", () => {
+    const isLightMode = document.documentElement.classList.toggle("light-mode");
+    localStorage.setItem("theme", isLightMode ? "light" : "dark");
+    document.getElementById("whiteModeToggle").innerHTML = isLightMode ? "LIGHT" : "DARK";
+});
 
 document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
+
