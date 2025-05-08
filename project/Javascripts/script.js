@@ -247,7 +247,16 @@ document.getElementById("whiteModeToggle").addEventListener("click", () => {
     document.getElementById("whiteModeToggle").innerHTML = mode;
 });
 
-document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
+document.getElementById("dropDown").onclick = () => {
+    const navRechts = document.querySelector(".nav-rechts");
+    if (navRechts.classList.contains("active")) {
+        navRechts.classList.remove("active");
+        navRechts.classList.add("inactive");
+        setTimeout(() => navRechts.classList.remove("inactive"), 500); // Remove inactive class after animation
+    } else {
+        navRechts.classList.add("active");
+    }
+};
 
 // Create and append the transition screen element
 const transitionScreen = document.createElement("div");
