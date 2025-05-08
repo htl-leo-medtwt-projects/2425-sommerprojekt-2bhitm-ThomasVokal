@@ -598,3 +598,30 @@ select,
     padding: 10px 0;
     border-top: 2px solid var(--text-offwhite);
 }
+
+/* ========= Transition Screen ========= */
+.transition-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-darker);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in and fade-out */
+}
+
+:root.light-mode .transition-screen {
+    background-color: var(--background-darker);
+}
+
+.transition-screen.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.transition-screen.fade-out {
+    opacity: 0; /* Fade out the screen */
+}

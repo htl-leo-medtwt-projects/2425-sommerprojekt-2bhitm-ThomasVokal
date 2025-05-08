@@ -232,10 +232,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("logo").addEventListener("click", () => {
-        window.location.href = "autos.html";
+        triggerPageTransition("autos.html");
     });
-});
 
+    transitionScreen.classList.add("fade-out"); // Add fade-out class
+    setTimeout(() => {
+        transitionScreen.classList.remove("active", "fade-out");
+    }, 500); // Ensure the fade-out animation completes
+});
 
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
     const mode = document.documentElement.classList.toggle("light-mode") ? "LIGHT" : "DARK";
@@ -244,4 +248,28 @@ document.getElementById("whiteModeToggle").addEventListener("click", () => {
 });
 
 document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
+
+// Create and append the transition screen element
+const transitionScreen = document.createElement("div");
+transitionScreen.classList.add("transition-screen");
+document.body.appendChild(transitionScreen);
+
+// Function to trigger the transition effect
+function triggerPageTransition(url) {
+    transitionScreen.classList.add("active");
+    setTimeout(() => {
+        window.location.href = url;
+    }, 1000); // 1 second delay
+}
+
+// Update navigation links to use the transition effect
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", event => {
+        const href = link.getAttribute("href");
+        if (href && !href.startsWith("#")) {
+            event.preventDefault();
+            triggerPageTransition(href);
+        }
+    });
+});
 
