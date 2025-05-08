@@ -19,22 +19,21 @@ function printSearchBox() {
         return;
     }
 
-    // Marken extrahieren
     let marken = [...new Set(autos.map(auto => auto.marke))];
 
     let minLeistung = Math.floor(Math.min(...autos.map(auto => auto.leistung)) / 10) * 10;
-    let maxLeistung = Math.max(...autos.map(auto => auto.leistung));
-    let leistungSchritte = [];
-    for (let i = minLeistung; i <= maxLeistung; i += 50) {
-        leistungSchritte.push(i);
-    }
+    let maxLeistung = Math.ceil(Math.max(...autos.map(auto => auto.leistung)) / 10) * 10;
 
     let minPreis = Math.floor(Math.min(...autos.map(auto => auto.preis)) / 1000) * 1000;
     let maxPreis = Math.ceil(Math.max(...autos.map(auto => auto.preis)) / 1000) * 1000;
-    let preisSchritte = [];
-    for (let i = minPreis; i <= maxPreis; i += 5000) {
-        preisSchritte.push(i);
-    }
+
+    let minBaujahr = Math.min(...autos.map(auto => auto.baujahr));
+    let maxBaujahr = Math.max(...autos.map(auto => auto.baujahr));
+
+    let minKilometer = Math.min(...autos.map(auto => auto.kilometerstand));
+    let maxKilometer = Math.max(...autos.map(auto => auto.kilometerstand));
+
+    let treibstoffOptionen = [...new Set(autos.map(auto => auto.treibstoff))];
 
     let searchBrick = `
         <div class="filters-container">
@@ -44,44 +43,24 @@ function printSearchBox() {
                     <option value="">Alle Marken</option>
                     ${marken.map(marke => `<option value="${marke}">${marke}</option>`).join("")}
                 </select>
-
-                <select id="leistung-filter">
-                    <option value="">Alle Leistungen</option>
-                    ${leistungSchritte.map(leistung => `<option value="${leistung}">von ${leistung} PS</option>`).join("")}
-                </select>
-
-                <select id="preis-filter">
-                    <option value="">Alle Preise</option>
-                    ${preisSchritte.map(preis => `<option value="${preis}">Bis ${preis} €</option>`).join("")}
-                </select>
-
-                <select id="baujahr-filter">
-                    <option value="">Alle Baujahre</option>
-                    ${Array.from({ length: 2025 - 2010 + 1 }, (_, i) => 2010 + i)
-                        .map(baujahr => `<option value="${baujahr}">${baujahr}</option>`).join("")}
-                </select>
-
-                <select id="getriebe-filter">
-                    <option value="">Alle Getriebe</option>
-                    ${getriebeOptionen.map(getriebe => `<option value="${getriebe}">${getriebe}</option>`).join("")}
-                </select>
-
                 <select id="treibstoff-filter">
                     <option value="">Alle Treibstoffe</option>
-                    <option value="Benzin">Benzin</option>
-                    <option value="Diesel">Diesel</option>
-                    <option value="Hybrid">Hybrid</option>
-                    <option value="Elektro">Elektro</option>
+                    ${treibstoffOptionen.map(treibstoff => `<option value="${treibstoff}">${treibstoff}</option>`).join("")}
                 </select>
+                <input type="number" id="min-leistung-filter" placeholder="Min. Leistung (PS)" min="${minLeistung}" max="${maxLeistung}">
+                <input type="number" id="max-leistung-filter" placeholder="Max. Leistung (PS)" min="${minLeistung}" max="${maxLeistung}">
 
-                <select id="kilometer-filter">
-                    <option value="">Alle Kilometer</option>
-                    <option value="50000">Bis 50.000 km</option>
-                    <option value="100000">Bis 100.000 km</option>
-                    <option value="150000">Bis 150.000 km</option>
-                    <option value="200000">Bis 200.000 km</option>
-                </select>
-            </div>
+                <input type="number" id="min-preis-filter" placeholder="Min. Preis (€)" min="${minPreis}" max="${maxPreis}">
+                <input type="number" id="max-preis-filter" placeholder="Max. Preis (€)" min="${minPreis}" max="${maxPreis}">
+
+                <input type="number" id="min-baujahr-filter" placeholder="Min. Baujahr" min="${minBaujahr}" max="${maxBaujahr}">
+                <input type="number" id="max-baujahr-filter" placeholder="Max. Baujahr" min="${minBaujahr}" max="${maxBaujahr}">
+
+                <input type="number" id="min-kilometer-filter" placeholder="Min. Kilometer" min="${minKilometer}" max="${maxKilometer}">
+                <input type="number" id="max-kilometer-filter" placeholder="Max. Kilometer" min="${minKilometer}" max="${maxKilometer}">
+
+                
+            </div
         </div>
     `;
     searchBox.innerHTML = searchBrick;
@@ -89,28 +68,29 @@ function printSearchBox() {
 
 function filterAutos() {
     let marke = document.getElementById("marke-filter").value;
-    let leistung = document.getElementById("leistung-filter").value;
-    let preis = document.getElementById("preis-filter").value;
-    let baujahr = document.getElementById("baujahr-filter").value;
-    let getriebe = document.getElementById("getriebe-filter").value;
+    let minLeistung = parseInt(document.getElementById("min-leistung-filter").value) || 0;
+    let maxLeistung = parseInt(document.getElementById("max-leistung-filter").value) || Infinity;
+    let minPreis = parseInt(document.getElementById("min-preis-filter").value) || 0;
+    let maxPreis = parseInt(document.getElementById("max-preis-filter").value) || Infinity;
+    let minBaujahr = parseInt(document.getElementById("min-baujahr-filter").value) || 0;
+    let maxBaujahr = parseInt(document.getElementById("max-baujahr-filter").value) || Infinity;
+    let minKilometer = parseInt(document.getElementById("min-kilometer-filter").value) || 0;
+    let maxKilometer = parseInt(document.getElementById("max-kilometer-filter").value) || Infinity;
     let treibstoff = document.getElementById("treibstoff-filter").value;
-    let kilometer = document.getElementById("kilometer-filter").value;
 
     let filteredAutos = autos.filter(auto => 
         (marke === "" || auto.marke === marke) &&
-        (leistung === "" || auto.leistung >= parseInt(leistung)) &&
-        (preis === "" || auto.preis <= parseInt(preis)) &&
-        (baujahr === "" || auto.baujahr <= parseInt(baujahr)) &&
-        (getriebe === "" || auto.getriebe === getriebe) &&
-        (treibstoff === "" || auto.treibstoff === treibstoff) &&
-        (kilometer === "" || auto.kilometerstand <= parseInt(kilometer))
+        (auto.leistung >= minLeistung && auto.leistung <= maxLeistung) &&
+        (auto.preis >= minPreis && auto.preis <= maxPreis) &&
+        (auto.baujahr >= minBaujahr && auto.baujahr <= maxBaujahr) &&
+        (auto.kilometerstand >= minKilometer && auto.kilometerstand <= maxKilometer) &&
+        (treibstoff === "" || auto.treibstoff === treibstoff)
     );
 
     renderAutos(filteredAutos);
 }
 
 function createDetailView(auto) {
-    // Check if detail view already exists
     if (document.getElementById("detail-view")) return;
 
     const detailView = document.createElement("div");
@@ -140,8 +120,20 @@ function createDetailView(auto) {
     `;
     document.body.appendChild(detailView);
 
+    gsap.fromTo(
+        detailView.querySelector(".detail-content"),
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 0.5, ease: "power4.out" }
+    );
+
     document.getElementById("close-detail-view").addEventListener("click", () => {
-        detailView.remove();
+        gsap.to(detailView.querySelector(".detail-content"), {
+            y: "100%",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power4.in",
+            onComplete: () => detailView.remove()
+        });
     });
 
     document.getElementById("fav-btn").addEventListener("click", (event) => {
@@ -160,7 +152,6 @@ function createDetailView(auto) {
         event.target.disabled = true;
     });
 
-    // Check if the car is already in favorites and update button state
     let favoriten = JSON.parse(localStorage.getItem("favoriten")) || [];
     if (favoriten.some(fav => fav.id === auto.id)) {
         const favButton = document.getElementById("fav-btn");
@@ -226,7 +217,6 @@ document.addEventListener("change", event => {
 
 let tempCount = 0;
 
-// Apply saved theme on page load
 document.addEventListener("DOMContentLoaded", () => {
     const savedMode = localStorage.getItem("theme");
     if (savedMode === "light") {
@@ -241,13 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loadFavoriten();
     }
 
-    // Add event listener to logo
     document.getElementById("logo").addEventListener("click", () => {
         window.location.href = "autos.html";
     });
 });
 
-// Toggle theme and save preference
+
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
     const mode = document.documentElement.classList.toggle("light-mode") ? "LIGHT" : "DARK";
     localStorage.setItem("theme", mode.toLowerCase());

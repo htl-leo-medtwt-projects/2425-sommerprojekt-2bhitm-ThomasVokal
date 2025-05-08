@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadFavoriten();
 
-    // Apply saved theme on page load
     const savedMode = localStorage.getItem("theme");
     if (savedMode === "light") {
         document.documentElement.classList.add("light-mode");
@@ -98,10 +97,23 @@ function createDetailView(auto) {
             </div>
         </div>
     `;
-    document.body.appendChild(detailView); 
+    document.body.appendChild(detailView);
+
+    // Add GSAP animation for detail view
+    gsap.fromTo(
+        detailView.querySelector(".detail-content"),
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 0.5, ease: "power4.out" }
+    );
 
     document.getElementById("close-detail-view").addEventListener("click", () => {
-        detailView.remove();
+        gsap.to(detailView.querySelector(".detail-content"), {
+            y: "100%",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power4.in",
+            onComplete: () => detailView.remove()
+        });
     });
 
     function generateDescription(auto) {
@@ -119,7 +131,7 @@ function createDetailView(auto) {
     });
 }
 
-// Toggle theme and save preference
+// Theme ändern und in localstorage speichern für Seitenübergreifendes wechseln
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
     const mode = document.documentElement.classList.toggle("light-mode") ? "LIGHT" : "DARK";
     localStorage.setItem("theme", mode.toLowerCase());

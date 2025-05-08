@@ -10,11 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
         let valid = true;
   
-        // Zurücksetzen des Rahmens
         usernameInput.style.border = "";
         passwordInput.style.border = "";
   
-        // Validierung
         if (username === "") {
           usernameInput.style.border = "2px solid red";
           valid = false;
@@ -27,11 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
         if (!valid) return;
   
-        // Speichern im localStorage
         localStorage.setItem("username", username);
         localStorage.setItem("password", password);
   
-        // Weiterleitung
         window.location.href = "../autos.html";
       });
     }
