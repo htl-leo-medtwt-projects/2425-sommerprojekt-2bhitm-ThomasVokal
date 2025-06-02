@@ -252,26 +252,23 @@ document.getElementById("dropDown").onclick = () => {
     if (navRechts.classList.contains("active")) {
         navRechts.classList.remove("active");
         navRechts.classList.add("inactive");
-        setTimeout(() => navRechts.classList.remove("inactive"), 500); // Remove inactive class after animation
+        setTimeout(() => navRechts.classList.remove("inactive"), 1000);
     } else {
         navRechts.classList.add("active");
     }
 };
 
-// Create and append the transition screen element
 const transitionScreen = document.createElement("div");
 transitionScreen.classList.add("transition-screen");
 document.body.appendChild(transitionScreen);
 
-// Function to trigger the transition effect
 function triggerPageTransition(url) {
     transitionScreen.classList.add("active");
     setTimeout(() => {
         window.location.href = url;
-    }, 1000); // 1 second delay
+    }, 1000);
 }
 
-// Update navigation links to use the transition effect
 document.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", event => {
         const href = link.getAttribute("href");
