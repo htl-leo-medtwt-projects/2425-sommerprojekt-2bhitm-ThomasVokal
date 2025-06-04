@@ -470,6 +470,63 @@ select,
     background-color: var(--text-logo-light-color);
 }
 
+.empfohlen-box {
+    background: var(--background-light-dark);
+    color: var(--text-logo-color);
+    border: 3px solid var(--text-logo-color);
+    border-radius: 18px;
+    margin: 30px auto 30px auto;
+    padding: 30px 20px 20px 20px;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.empfohlen-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.empfohlen-form select,
+.empfohlen-form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    min-width: 140px;
+    font-size: 16px;
+}
+
+.empfohlen-form button {
+    background: var(--text-logo-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.empfohlen-auto-card {
+    background: var(--background-dark);
+    color: var(--text-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.empfohlen-auto-card img {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+}
+
 @media (max-width: 1300px) {
 
     .filters {

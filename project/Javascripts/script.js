@@ -1,17 +1,133 @@
 let autos = [];
 let searchBox = document.getElementById("search-box");
-let getriebeOptionen = ["Automatik", "Manuell"];
-let favoriten = []
+let favoriten = [];
+let empfohlenContainer = document.getElementById("empfohlen-container");
+if (empfohlenContainer) {
+    empfohlenContainer.innerHTML = "<div style='color:#7700ff;text-align:center;padding:30px;'>Lade Daten...</div>";
+}
 
 fetch("data/autos.json")
-  .then(response => response.json())
+  .then(response => {
+      if (!response.ok) throw new Error("Autos konnten nicht geladen werden!");
+      return response.json();
+  })
   .then(data => {
       autos = data;
-      console.log(autos);
+      printEmpfohlenFragebogen();
       printSearchBox();
       renderAutos(autos);
   })
-  .catch(error => console.error("Fehler beim Laden der Daten:", error));
+  .catch(error => {
+      if (empfohlenContainer) {
+          empfohlenContainer.innerHTML = "<div style='color:red;text-align:center;padding:30px;'>Fehler beim Laden der Fahrzeugdaten!</div>";
+      }
+      console.error("Fehler beim Laden der Daten:", error);
+  });
+
+// --- NEU: Empfohlenes Auto Fragebogen & Anzeige ---
+function printEmpfohlenFragebogen() {
+    if (!empfohlenContainer) return;
+    let marken = [...new Set(autos.map(auto => auto.marke))];
+    let treibstoffe = [...new Set(autos.map(auto => auto.treibstoff))];
+    let getriebe = [...new Set(autos.map(auto => auto.getriebe))];
+    let fahrzeugtypen = [...new Set(autos.map(auto => auto.fahrzeugtyp))];
+    let zylinder = [...new Set(autos.map(auto => auto.zylinder))];
+
+    empfohlenContainer.innerHTML = `
+        <div class="empfohlen-box">
+            <h2>Dein empfohlenes Auto</h2>
+            <form id="empfohlen-form" class="empfohlen-form">
+                <select name="marke" required>
+                    <option value="">Marke wählen</option>
+                    ${marken.map(m => `<option value="${m}">${m}</option>`).join("")}
+                </select>
+                <input type="number" name="baujahr" placeholder="Baujahr" required min="1900" max="2100">
+                <input type="number" name="kilometerstand" placeholder="Kilometerstand" required min="0">
+                <input type="number" name="leistung" placeholder="Leistung (PS)" required min="1">
+                <input type="number" name="preis" placeholder="Preis (€)" required min="0">
+                <select name="treibstoff" required>
+                    <option value="">Treibstoff wählen</option>
+                    ${treibstoffe.map(t => `<option value="${t}">${t}</option>`).join("")}
+                </select>
+                <select name="getriebe" required>
+                    <option value="">Getriebe wählen</option>
+                    ${getriebe.map(g => `<option value="${g}">${g}</option>`).join("")}
+                </select>
+                <select name="fahrzeugtyp" required>
+                    <option value="">Fahrzeugtyp wählen</option>
+                    ${fahrzeugtypen.map(f => `<option value="${f}">${f}</option>`).join("")}
+                </select>
+                <select name="zylinder" required>
+                    <option value="">Zylinder wählen</option>
+                    ${zylinder.map(z => `<option value="${z}">${z}</option>`).join("")}
+                </select>
+                <button type="submit">Empfohlenes Auto finden</button>
+            </form>
+            <div id="empfohlen-auto-anzeige"></div>
+        </div>
+    `;
+
+    document.getElementById("empfohlen-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const values = {
+            marke: form.marke.value,
+            baujahr: parseInt(form.baujahr.value),
+            kilometerstand: parseInt(form.kilometerstand.value),
+            leistung: parseFloat(form.leistung.value),
+            preis: parseInt(form.preis.value),
+            treibstoff: form.treibstoff.value,
+            getriebe: form.getriebe.value,
+            fahrzeugtyp: form.fahrzeugtyp.value,
+            zylinder: parseInt(form.zylinder.value)
+        };
+        const empfohlen = findeEmpfohlenesAuto(values);
+        renderEmpfohlenesAuto(empfohlen);
+    });
+}
+
+function findeEmpfohlenesAuto(wunsch) {
+    let minScore = Infinity;
+    let bestAuto = null;
+    for (const auto of autos) {
+        let score = 0;
+        score += auto.marke === wunsch.marke ? 0 : 10000;
+        score += auto.treibstoff === wunsch.treibstoff ? 0 : 1000;
+        score += auto.getriebe === wunsch.getriebe ? 0 : 1000;
+        score += auto.fahrzeugtyp === wunsch.fahrzeugtyp ? 0 : 1000;
+        score += auto.zylinder === wunsch.zylinder ? 0 : 100;
+        score += Math.abs(auto.baujahr - wunsch.baujahr);
+        score += Math.abs(auto.kilometerstand - wunsch.kilometerstand) / 1000;
+        score += Math.abs(auto.leistung - wunsch.leistung);
+        score += Math.abs(auto.preis - wunsch.preis) / 1000;
+        if (score < minScore) {
+            minScore = score;
+            bestAuto = auto;
+        }
+    }
+    return bestAuto;
+}
+
+function renderEmpfohlenesAuto(auto) {
+    const anzeige = document.getElementById("empfohlen-auto-anzeige");
+    if (!auto) {
+        anzeige.innerHTML = `<p>Kein passendes Auto gefunden.</p>`;
+        return;
+    }
+    anzeige.innerHTML = `
+        <div class="empfohlen-auto-card">
+            <h3>${auto.marke} ${auto.modell}</h3>
+            <img src="${auto.bild}" alt="${auto.marke} ${auto.modell}" style="max-width:300px; border-radius:10px;">
+            <p><strong>Preis:</strong> ${auto.preis} €</p>
+            <p><strong>Leistung:</strong> ${auto.leistung} PS</p>
+            <p><strong>Kilometerstand:</strong> ${auto.kilometerstand} km</p>
+            <p><strong>Baujahr:</strong> ${auto.baujahr}</p>
+            <p><strong>Getriebe:</strong> ${auto.getriebe}</p>
+            <p><strong>Treibstoff:</strong> ${auto.treibstoff}</p>
+            <p><strong>Fahrzeugtyp:</strong> ${auto.fahrzeugtyp}</p>            <p><strong>Zylinder:</strong> ${auto.zylinder}</p>
+        </div>
+    `;
+}
 
 function printSearchBox() {
     if (!searchBox) {
