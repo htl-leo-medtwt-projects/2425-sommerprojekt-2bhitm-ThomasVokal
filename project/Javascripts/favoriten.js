@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
         loadFavoriten();
     }
 
-    // Smoothly reveal the page after loading
-    transitionScreen.classList.add("fade-out"); // Add fade-out class
+    
+    transitionScreen.classList.add("fade-out");
     setTimeout(() => {
         transitionScreen.classList.remove("active", "fade-out");
-    }, 500); // Ensure the fade-out animation completes
+    }, 500); 
 });
 
 function loadFavoriten() {
@@ -55,7 +55,6 @@ function renderFavoriten(favoriten) {
         autoBox.addEventListener("click", () => createDetailView(auto));
         container.appendChild(autoBox);
 
-        // Intersection Observer for animation
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -75,7 +74,6 @@ function renderFavoriten(favoriten) {
 }
 
 function createDetailView(auto) {
-    // Check if detail view already exists
     if (document.getElementById("detail-view")) return;
 
     const detailView = document.createElement("div");
@@ -105,7 +103,6 @@ function createDetailView(auto) {
     `;
     document.body.appendChild(detailView);
 
-    // Add GSAP animation for detail view
     gsap.fromTo(
         detailView.querySelector(".detail-content"),
         { y: "100%", opacity: 0 },
@@ -137,7 +134,6 @@ function createDetailView(auto) {
     });
 }
 
-// Theme ändern und in localstorage speichern für Seitenübergreifendes wechseln
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
     const mode = document.documentElement.classList.toggle("light-mode") ? "LIGHT" : "DARK";
     localStorage.setItem("theme", mode.toLowerCase());
@@ -146,20 +142,17 @@ document.getElementById("whiteModeToggle").addEventListener("click", () => {
 
 document.getElementById("dropDown").onclick = () => document.querySelector(".nav-rechts").classList.toggle("active");
 
-// Create and append the transition screen element
 const transitionScreen = document.createElement("div");
 transitionScreen.classList.add("transition-screen");
 document.body.appendChild(transitionScreen);
 
-// Function to trigger the transition effect
 function triggerPageTransition(url) {
     transitionScreen.classList.add("active");
     setTimeout(() => {
         window.location.href = url;
-    }, 1000); // 1 second delay
+    }, 1000);
 }
 
-// Update navigation links to use the transition effect
 document.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", event => {
         const href = link.getAttribute("href");

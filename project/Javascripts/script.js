@@ -13,8 +13,8 @@ fetch("data/autos.json")
   })
   .then(data => {
       autos = data;
-      printEmpfohlenFragebogen();
       printSearchBox();
+      printEmpfohlenFragebogen();
       renderAutos(autos);
   })
   .catch(error => {
@@ -24,7 +24,6 @@ fetch("data/autos.json")
       console.error("Fehler beim Laden der Daten:", error);
   });
 
-// --- NEU: Empfohlenes Auto Fragebogen & Anzeige ---
 function printEmpfohlenFragebogen() {
     if (!empfohlenContainer) return;
     let marken = [...new Set(autos.map(auto => auto.marke))];
@@ -35,41 +34,44 @@ function printEmpfohlenFragebogen() {
 
     empfohlenContainer.innerHTML = `
         <div class="empfohlen-box">
-            <h2>Dein empfohlenes Auto</h2>
             <form id="empfohlen-form" class="empfohlen-form">
-                <select name="marke" required>
-                    <option value="">Marke wählen</option>
-                    ${marken.map(m => `<option value="${m}">${m}</option>`).join("")}
-                </select>
-                <input type="number" name="baujahr" placeholder="Baujahr" required min="1900" max="2100">
-                <input type="number" name="kilometerstand" placeholder="Kilometerstand" required min="0">
-                <input type="number" name="leistung" placeholder="Leistung (PS)" required min="1">
-                <input type="number" name="preis" placeholder="Preis (€)" required min="0">
-                <select name="treibstoff" required>
-                    <option value="">Treibstoff wählen</option>
-                    ${treibstoffe.map(t => `<option value="${t}">${t}</option>`).join("")}
-                </select>
-                <select name="getriebe" required>
-                    <option value="">Getriebe wählen</option>
-                    ${getriebe.map(g => `<option value="${g}">${g}</option>`).join("")}
-                </select>
-                <select name="fahrzeugtyp" required>
-                    <option value="">Fahrzeugtyp wählen</option>
-                    ${fahrzeugtypen.map(f => `<option value="${f}">${f}</option>`).join("")}
-                </select>
-                <select name="zylinder" required>
-                    <option value="">Zylinder wählen</option>
-                    ${zylinder.map(z => `<option value="${z}">${z}</option>`).join("")}
-                </select>
-                <button type="submit">Empfohlenes Auto finden</button>
+                <div id="empfohlen-fields">
+                    <select name="marke" required>
+                        <option value="">Marke wählen</option>
+                        ${marken.map(m => `<option value="${m}">${m}</option>`).join("")}
+                    </select>
+                    <input type="number" name="baujahr" placeholder="Baujahr" required min="1900" max="2100">
+                    <input type="number" name="kilometerstand" placeholder="Kilometerstand" required min="0">
+                    <input type="number" name="leistung" placeholder="Leistung (PS)" required min="1">
+                    <input type="number" name="preis" placeholder="Preis (€)" required min="0">
+                    <select name="treibstoff" required>
+                        <option value="">Treibstoff wählen</option>
+                        ${treibstoffe.map(t => `<option value="${t}">${t}</option>`).join("")}
+                    </select>
+                    <select name="getriebe" required>
+                        <option value="">Getriebe wählen</option>
+                        ${getriebe.map(g => `<option value="${g}">${g}</option>`).join("")}
+                    </select>
+                    <select name="fahrzeugtyp" required>
+                        <option value="">Fahrzeugtyp wählen</option>
+                        ${fahrzeugtypen.map(f => `<option value="${f}">${f}</option>`).join("")}
+                    </select>
+                    <select name="zylinder" required>
+                        <option value="">Zylinder wählen</option>
+                        ${zylinder.map(z => `<option value="${z}">${z}</option>`).join("")}
+                    </select>
+                </div>
+                <div style="width:100%;text-align:center;margin-top:15px;">
+                    <button type="button" id="empfohlen-btn" class="empfohlen-find-btn">Empfohlenes Auto finden</button>
+                </div>
             </form>
-            <div id="empfohlen-auto-anzeige"></div>
         </div>
     `;
 
-    document.getElementById("empfohlen-form").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const form = e.target;
+    document.getElementById("empfohlen-btn").addEventListener("click", function() {
+        const form = document.getElementById("empfohlen-form");
+        if (!form) return;
+        if (!form.reportValidity()) return;
         const values = {
             marke: form.marke.value,
             baujahr: parseInt(form.baujahr.value),
@@ -82,7 +84,11 @@ function printEmpfohlenFragebogen() {
             zylinder: parseInt(form.zylinder.value)
         };
         const empfohlen = findeEmpfohlenesAuto(values);
-        renderEmpfohlenesAuto(empfohlen);
+        if (empfohlen) {
+            createDetailView(empfohlen, true);
+        } else {
+            alert("Kein passendes Auto gefunden.");
+        }
     });
 }
 
@@ -274,6 +280,7 @@ function createDetailView(auto) {
         favButton.textContent = "Favorit Hinzugefügt";
         favButton.disabled = true;
     }
+
 }
 
 function renderAutos(filteredAutos) {
@@ -351,10 +358,10 @@ document.addEventListener("DOMContentLoaded", () => {
         triggerPageTransition("autos.html");
     });
 
-    transitionScreen.classList.add("fade-out"); // Add fade-out class
+    transitionScreen.classList.add("fade-out");
     setTimeout(() => {
         transitionScreen.classList.remove("active", "fade-out");
-    }, 500); // Ensure the fade-out animation completes
+    }, 500); 
 });
 
 document.getElementById("whiteModeToggle").addEventListener("click", () => {
